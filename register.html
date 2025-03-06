@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <script>
+        function selectGender() {
+            var gender = document.getElementsByName("gender");
+            if (gender[0].checked) {
+                gender[1].checked = false;
+                gender[2].checked = false;
+            }
+        }
+    </script>
+</head>
+<style>
+    label {
+        color: darkblue;
+    }
+
+    li {
+        color: brown
+    }
+
+    .ayatheme {
+        color: red;
+    }
+
+    #txtName {
+        background-color: tomato;
+    }
+
+    p,
+    div {
+        text-align: center;
+    }
+
+    p:first-letter {
+        font-size: 200px;
+    }
+
+    a:hover {
+        color: green;
+    }
+</style>
+
+<body>
+    <a href="login.html">login</a>
+    <p>
+        This is Register Page.
+    </p>
+    <div>
+        Hello,I am here
+    </div>
+    <table>
+        <tr>
+            <td>
+                <Label>Name:</Label>
+            </td>
+            <td>
+                <input type="text" placeholder="Enter your name" id="txtName">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <Label>Email:</Label>
+            </td>
+            <td>
+                <input type="text" placeholder="Enter your email">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <Label>Gender:</Label>
+            </td>
+            <td>
+                <input type="radio" value="male" name="gender" onchange="selectGender()"> <label>Male</label>
+                <input type="radio" value="female" checked name="gender" onchange="selectGender()">
+                <label>Female</label>
+                <input type="radio" value="other" name="gender" onchange="selectGender()"> <label>Other</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <Label>Hobbies</Label>
+            </td>
+            <td>
+                <input type="checkbox" value="reading"> <label>Reading</label>
+                <input type="checkbox" value="writing"> <label>Writing</label>
+                <input type="checkbox" value="coding"> <label>Coding</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <Label>City</Label>
+            </td>
+            <td>
+                <select>
+                    <option value="YGN">YANGON</option>
+                    <option value="MDY">MANDALAY</option>
+                    <option value="NPT">NPT</option>
+                    <option value="MGY">MGY</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <Label>My friends</Label>
+            </td>
+            <td>
+                <ul>
+                    <li>MG MG </li>
+                    <li>AYE AYE </li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <Label>Bank Account</Label>
+            </td>
+            <td>
+                <ol>
+                    <li class="ayatheme">AYA Account</li>
+                    <li class="kbztheme">KBZ Account</li>
+                </ol>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td>
+                <Button style="color: green;">Register</Button>
+                <Button style="color: red;">Cancel</Button>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login page</title>
+    <script>
+      function loginProcess() {
+        var userName=document.getElementById("txtUserName").value;
+        alert("Hello,"+userName);
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Please type your login credentials</h1>
+    <label> User Name: </label> <br />
+    <input type="text" placeholder="type your name." id="txtUserName" /> <br />
+
+    <label> Password: </label><br />
+    <input type="password" placeholder="type your password." id="txtPassword"/><br />
+
+    <button onclick="loginProcess()">Login</button>
+    <button>Cancel</button>
+  </body>
+</html>
