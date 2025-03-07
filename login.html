@@ -1,23 +1,45 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Login page</title>
-    <script>
-      function loginProcess() {
-        var userName=document.getElementById("txtUserName").value;
-        alert("Hello,"+userName);
+
+<head>
+  <title>Login page</title>
+
+  <script>
+
+    function loginProcess() {
+      //getting the inputted user name 
+      var userName = document.getElementById("txtUserName").value; //MG MG  >> RAM >> store the value for your RAM
+      //getting the inputted password
+      var password = document.getElementById("txtPassword").value;
+      if (userName == "admin" && password == "123456") {
+        //go to dashoard
+        window.location = 'dashboard.html';
       }
-    </script>
-  </head>
-  <body>
+      else {
+        alert("Invalid user and password.အချတ်အလတ်မှားယွင်းနေပါတယ်😢");
+      }
+    }
+  </script>
+
+  <style>
+    .center-all {
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="center-all">
     <h1>Please type your login credentials</h1>
     <label> User Name: </label> <br />
     <input type="text" placeholder="type your name." id="txtUserName" /> <br />
 
     <label> Password: </label><br />
-    <input type="password" placeholder="type your password." id="txtPassword"/><br />
+    <input type="password" placeholder="type your password." id="txtPassword" /><br />
 
     <button onclick="loginProcess()">Login</button>
     <button>Cancel</button>
-  </body>
+  </div>
+</body>
+
 </html>

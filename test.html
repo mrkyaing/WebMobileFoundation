@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test JS</title>
+    <script>
+        function doCalculate() {
+            let firstNumer = document.getElementById("txtN1").value;// get the user's keyboard input 
+            let secondNumer = document.getElementById("txtN2").value;// get the user's keyboard input 
+            let result = Number(firstNumer) + Number(secondNumer);
+            document.getElementById("txtResult").value = result;// set the value to the result text box
+            let a = 1;
+            let b = 2;
+            var message = "Hello";
+            if (a > b) {
+                alert("a is greater than b.");
+            }
+            else {
+                alert("a is not grater than b.");
+            }
+            alert(message);
+        }
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById("btnCancel").addEventListener("click", function () {
+                document.getElementById("txtN1").value = '';
+                document.getElementById("txtN2").value = '';
+                document.getElementById("txtResult").value = '';
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td>
+                Number 1 :
+            </td>
+            <td>
+                <input type="number" id="txtN1">
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                Number 2 :
+            </td>
+            <td>
+                <input type="number" id="txtN2">
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                Result:
+            </td>
+            <td>
+                <input type="number" id="txtResult" readonly>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+            </td>
+            <td>
+                <button onclick="doCalculate()">Calculate</button>
+                <button id="btnCancel">Cancel</button>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>
