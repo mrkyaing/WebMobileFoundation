@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice DOM with JS</title>
+    <script>
+        function changeColor() {
+            document.getElementById("myP").style.color = "red";
+            document.getElementById("myP").innerHTML = "Hay,You clicked the button";
+            let a = 10;
+            let b = 20;
+            if (a > b) {
+                console.log("I come from inside the if condition.");
+            } else {
+                console.log("I come from the else.")
+            }
+            switch (a) {
+                case 10: console.log("Hi"); break;
+                case 20: console.log("Hello"); break;
+            }
+        }
+        function fellingToday() {
+            document.querySelector("h3").innerHTML = "I am happy today.😀";
+            const me = document.createElement("p");
+            me.innerText = "I am MG.";
+            document.body.appendChild(me);
+        }
+        function Multiple() {
+            let i = 1;
+            while (i <= 10) {
+                console.log(i);
+                i++;
+            }
+        }
+        function TwoMultipleUpto12() {
+            let i = 1;
+            let outputDiv = document.getElementById("myOutput");
+            do {
+                let r = (2 * i);
+                let p = document.createElement("p");
+                p.textContent = r;
+                outputDiv.appendChild(p);
+                i++;
+            } while (i <= 12);
+
+            for (var k = 1; k <= 5; k++) {
+                console.log(k);
+            }
+        }
+        function friends() {
+            //create a array >>string array
+            let friends = ["Hay Aung", "Min Min", "Zaw Zaw", "Aye Aye"];
+            //find the ul element with DOM
+            let ul = document.getElementById("myFriends");
+
+            friends.forEach(function (friend) {
+                //create the li dynamically
+                let li = document.createElement("li");
+                //add the result to li tag
+                li.textContent = friend;
+                //add the li to the ul tag.
+                ul.appendChild(li);
+            });
+
+        }
+    </script>
+</head>
+
+<body>
+    <p id="myP">
+        Hello,Nice to see you!!
+    </p>
+
+    <h3>
+        Hi,Are you happy today?
+    </h3>
+    <button onclick="changeColor()">
+        change color
+    </button>
+    <button onclick="fellingToday()">
+        Felling
+    </button>
+    <button onclick="Multiple()">
+        show me 1 to 100
+    </button>
+
+    <button onclick="TwoMultipleUpto12()">
+        2 အလီ ပုံစံ ပြပေးပါ.
+    </button>
+
+    <div id="myOutput">
+
+    </div>
+
+    <button onclick="friends()">
+        show my friends
+    </button>
+    <ul id="myFriends"></ul>
+</body>
+
+</html>
