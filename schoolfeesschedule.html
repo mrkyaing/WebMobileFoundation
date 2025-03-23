@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Fees Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        .container {
+            width: 80%;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            margin: auto;
+        }
+
+        h2,
+        h3 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid #ddd;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #181a18;
+            color: white;
+        }
+
+        .btn {
+            margin-top: 15px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            color: white;
+        }
+
+        .add-btn {
+            background: #007bff;
+        }
+
+        .add-btn:hover {
+            background: #0056b3;
+        }
+
+        .remove-btn {
+            background: red;
+        }
+
+        .remove-btn:hover {
+            background: darkred;
+        }
+
+        .submit-btn {
+            background: #28a745;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .submit-btn:hover {
+            background: #218838;
+        }
+
+        /* Toggle Switch Style */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+            margin-left: 10px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: 0.4s;
+            border-radius: 24px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 4px;
+            bottom: 3px;
+            background-color: white;
+            transition: 0.4s;
+            border-radius: 50%;
+        }
+
+        input:checked+.slider {
+            background-color: #28a745;
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(26px);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>School Fees Schedule</h2>
+        <form id="schoolFeesForm">
+            <label for="classId">Class Code/Name:</label>
+            <select id="classId" required>
+                <option value="">Select One</option>
+                <option value="1">Class 1</option>
+                <option value="2">Class 2</option>
+            </select>
+
+            <label for="monthlyFees">Monthly Fees:</label>
+            <input type="number" id="monthlyFees" step="0.01" required placeholder="Enter monthly fees">
+
+            <label for="totalFees">Total Academic Fees:</label>
+            <input type="number" id="totalFees" step="0.01" required placeholder="Enter total fees">
+
+            <label for="payTime">Number of Pay Time:</label>
+            <input type="number" id="payTime" required placeholder="Enter number of pay time">
+
+            <label for="fromYear">From Academic Year:</label>
+            <input type="number" id="fromYear" required placeholder="Enter from year">
+
+            <label for="toYear">To Academic Year:</label>
+            <input type="number" id="toYear" required placeholder="Enter to year">
+
+            <label for="isCurrentYear">Is Current Year:</label>
+            <label class="switch">
+                <input type="checkbox" id="isCurrentYear">
+                <span class="slider round"></span>
+            </label>
+
+            <label for="remark">Remark:</label>
+            <textarea id="remark"></textarea>
+
+            <h3>School Fees Additional</h3>
+
+            <table id="feesTable">
+                <thead>
+                    <tr>
+                        <th>School Fees Additional</th>
+                        <th>Fees Amount</th>
+                        <th>Remark</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <select class="additionalInfo" required>
+                                <option value="">Select one</option>
+                                <option value="201">Included Lunch</option>
+                                <option value="202">School Bus</option>
+                                <option value="203">Scholorship</option>
+                            </select>
+                        </td>
+                        <td><input type="number" class="feesAmount" step="0.01" required></td>
+                        <td><input type="text" class="additionalRemark"></td>
+                        <td><button type="button" class="btn remove-btn" onclick="removeRow(this)">Remove</button></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <button type="button" class="btn add-btn" onclick="addRow()">Add More School Additional Fees</button>
+            <button type="submit" class="btn submit-btn">Create School Fess with Additional</button>
+        </form>
+    </div>
+
+    <script>
+        function addRow() {
+            const table = document.getElementById("feesTable").getElementsByTagName("tbody")[0];
+            const newRow = document.createElement("tr");
+
+            newRow.innerHTML = `
+                <td>
+                    <select class="additionalInfo" required>
+                        <option value="">Select Info</option>
+                        <option value="201">Info 201</option>
+                        <option value="202">Info 202</option>
+                    </select>
+                </td>
+                <td><input type="number" class="feesAmount" step="0.01" required></td>
+                <td><input type="text" class="additionalRemark"></td>
+                <td><button type="button" class="btn remove-btn" onclick="removeRow(this)">Remove</button></td>
+            `;
+
+            table.appendChild(newRow);
+        }
+
+        function removeRow(button) {
+            button.parentElement.parentElement.remove();
+        }
+
+        document.getElementById("schoolFeesForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            // Master Table (SchoolFeesSchedule)
+            const classId = document.getElementById("classId").value;
+            const monthlyFees = document.getElementById("monthlyFees").value;
+            const totalFees = document.getElementById("totalFees").value;
+            const payTime = document.getElementById("payTime").value;
+            const fromYear = document.getElementById("fromYear").value;
+            const toYear = document.getElementById("toYear").value;
+            const isCurrentYear = document.getElementById("isCurrentYear").checked ? 1 : 0;
+            const remark = document.getElementById("remark").value;
+
+            // One-to-Many Table (SchoolFeesAdditional)
+            const additionalFees = [];
+            document.querySelectorAll("#feesTable tbody tr").forEach(row => {
+                const additionalInfo = row.querySelector(".additionalInfo").value;
+                const feesAmount = row.querySelector(".feesAmount").value;
+                const additionalRemark = row.querySelector(".additionalRemark").value;
+
+                if (additionalInfo && feesAmount) {
+                    additionalFees.push({ additionalInfo, feesAmount, additionalRemark });
+                }
+            });
+
+            console.log("School Fees Schedule:", { classId, monthlyFees, totalFees, payTime, fromYear, toYear, isCurrentYear, remark });
+            console.log("Additional Fees:", additionalFees);
+
+            alert("Form Submitted! Check the console for data.");
+        });
+    </script>
+
+</body>
+
+</html>
